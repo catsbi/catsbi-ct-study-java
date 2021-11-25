@@ -3,7 +3,7 @@ package catsbi.me.datastructure.tree;
 import java.util.Objects;
 import java.util.Optional;
 
-public class CustomBinaryTree<T> {
+public class CustomBinaryTree<T extends Comparable<T>> {
     public Node<T> head = null;
 
     public boolean insert(T value) {
