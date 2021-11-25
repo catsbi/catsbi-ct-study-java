@@ -70,9 +70,7 @@ public class CustomBinaryTree<T> {
             return false;
         }
 
-        if (this.head.value == value
-                && Objects.isNull(this.head.left)
-                && Objects.isNull(this.head.right)) {
+        if (isHeadNode(value)) {
             this.head = null;
             return true;
         }
@@ -95,83 +93,84 @@ public class CustomBinaryTree<T> {
         }
 
         //Case 1. Node가 Leaf Node인 경우
-        if (curNode.left == null && curNode.right == null) {
-            if (curParentNode.compareTo(targetNode) > 0) {
-                curParentNode.left = null;
-                curNode = null;
-            } else {
-                curParentNode.right = null;
-                curNode = null;
-            }
-            return true;
-            //Case 2. Node의 left Node가 있는 경우
-        } else if (curNode.left != null && curNode.right == null) {
-            if (curParentNode.compareTo(targetNode) > 0) {
-                curParentNode.left = curNode.left;
-                curNode = null;
-            } else {
-                curParentNode.right = curNode.left;
-                curNode = null;
-            }
-            return true;
-            //Case 3. Node의 Right Node가 있는 경우
-        } else if (curNode.left == null && curNode.right != null) {
-            if (curParentNode.compareTo(targetNode) > 0) {
-                curParentNode.left = curNode.right;
-                curNode = null;
-            } else {
-                curParentNode.right = curNode.right;
-                curNode = null;
-            }
-            return true;
-            //Case 4. Node의 양 측 Node가 모두 있는 경우
-        } else {
-            if (curParentNode.compareTo(targetNode) > 0) {
-                Node<T> changeNode = curNode.right;
-                Node<T> changeParentNode = curNode.right;
-
-                while (changeNode.left != null) {
-                    changeParentNode = changeNode;
-                    changeNode = changeNode.left;
-                }
-
-                if (changeNode.right != null) {
-                    changeParentNode.left = changeNode.right;
-                } else {
-                    changeParentNode.left = null;
-                }
-
-                curParentNode.left = changeNode;
-                changeNode.right = curNode.right;
-                changeNode.left = curNode.left;
-
-            } else {
-                Node<T> changeNode = curNode.right;
-                Node<T> changeParentNode = curNode.right;
-                while (changeNode.left != null) {
-                    changeParentNode = changeNode;
-                    changeNode = changeNode.left;
-                }
-
-                if (changeNode.right != null) {
-                    changeParentNode.left = changeNode.right;
-                } else {
-                    changeParentNode.left = null;
-                }
-
-                curParentNode.right = changeNode;
-
-                if (curNode.right != changeNode) {
-                    changeNode.right = curNode.right;
-                }
-                changeNode.left = curNode.left;
-
-            }
-            curNode = null;
+        if (isLeafNode(curNode)) {
+            deleteLeafNode(curParentNode, targetNode);
             return true;
         }
 
+        //Case 2. Node의 left Node가 있는 경우
+        if (hasLeftNode(curNode)) {
+            addEdgeNode(curParentNode, curNode.left, curParentNode.compareTo(targetNode));
+            return true;
+        }
 
+        //Case 3. Node의 Right Node가 있는 경우
+        if (hasRightNode(curNode)) {
+            addEdgeNode(curParentNode, curNode.right, curParentNode.compareTo(targetNode));
+            return true;
+        }
+
+        //Case 4. Node의 양 측 Node가 모두 있는 경우
+        Node<T> changeNode = curNode.right;
+        Node<T> changeParentNode = curNode.right;
+
+        while (changeNode.left != null) {
+            changeParentNode = changeNode;
+            changeNode = changeNode.left;
+        }
+
+        if (changeNode.right != null) {
+            changeParentNode.left = changeNode.right;
+        } else {
+            changeParentNode.left = null;
+        }
+
+        if (curParentNode.compareTo(targetNode) > 0) {
+            curParentNode.left = changeNode;
+        } else {
+            curParentNode.right = changeNode;
+        }
+
+        if (curNode.right != changeNode) {
+            changeNode.right = curNode.right;
+        }
+        changeNode.left = curNode.left;
+
+        return true;
+    }
+
+    private void addEdgeNode(Node<T> curParentNode, Node<T> node, int compareResult) {
+        if (compareResult > 0) {
+            curParentNode.left = node;
+            return;
+        }
+        curParentNode.right = node;
+    }
+
+    private void deleteLeafNode(Node<T> curParentNode, Node<T> targetNode) {
+        if (curParentNode.compareTo(targetNode) > 0) {
+            curParentNode.left = null;
+        } else {
+            curParentNode.right = null;
+        }
+    }
+
+    private boolean hasRightNode(Node<T> curNode) {
+        return curNode.left == null && curNode.right != null;
+    }
+
+    private boolean hasLeftNode(Node<T> curNode) {
+        return curNode.left != null && curNode.right == null;
+    }
+
+    private boolean isLeafNode(Node<T> curNode) {
+        return curNode.left == null && curNode.right == null;
+    }
+
+    private boolean isHeadNode(T value) {
+        return this.head.value == value
+                && Objects.isNull(this.head.left)
+                && Objects.isNull(this.head.right);
     }
 
 }

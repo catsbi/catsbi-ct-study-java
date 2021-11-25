@@ -79,7 +79,7 @@ class CustomBinaryTreeTest {
     void deleteNodeWithExistsData(CustomBinaryTree<Integer> tree) {
         tree.delete(15);
 
-        assertThat(tree.head.right.right.value).isEqualTo(16);
+        assertThat(tree.head.right.right.value).isEqualTo(18);
 
     }
 
