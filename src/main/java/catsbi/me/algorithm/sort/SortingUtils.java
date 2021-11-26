@@ -4,7 +4,8 @@ import java.util.Collections;
 import java.util.List;
 
 public class SortingUtils {
-    private SortingUtils() {}
+    private SortingUtils() {
+    }
 
     public static <T extends Comparable<T>> void bubbleSort(List<T> list) {
 
@@ -24,7 +25,22 @@ public class SortingUtils {
         }
     }
 
-    public static <T extends Comparable<T>> void selectSort(List<T> list) {
+    public static <T extends Comparable<T>> void selectionSort(List<T> list) {
+        int targetIndex;
+
+        for (int i = 0; i < list.size() - 1; i++) {
+            targetIndex = i;
+
+            for (int j = i + 1; j < list.size(); j++) {
+                if (list.get(targetIndex).compareTo(list.get(j)) > 0) {
+                    targetIndex = j;
+                }
+            }
+
+            if (targetIndex != i) {
+                Collections.swap(list, i, targetIndex);
+            }
+        }
 
     }
 }
