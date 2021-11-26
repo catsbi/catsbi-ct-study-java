@@ -30,4 +30,11 @@ class SortingUtilsTest {
         assertThat(mixedList).containsExactly(2, 3, 6, 7, 13, 22, 42);
     }
 
+    @Test
+    void insertionSorting() {
+        SortingUtils.insertionSort(mixedList);
+
+        assertThat(mixedList).containsExactly(2, 3, 6, 7, 13, 22, 42);
+    }
+
 }

@@ -41,6 +41,13 @@ public class SortingUtils {
                 Collections.swap(list, i, targetIndex);
             }
         }
+    }
 
+    public static <T extends Comparable<T>> void insertionSort(List<T> list) {
+        for (int i = 0; i < list.size() - 1; i++) {
+            for (int j = i + 1; j > 0 && list.get(j).compareTo(list.get(j - 1)) < 0; j--) {
+                Collections.swap(list, j, j - 1);
+            }
+        }
     }
 }
