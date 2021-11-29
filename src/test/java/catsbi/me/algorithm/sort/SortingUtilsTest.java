@@ -46,4 +46,12 @@ class SortingUtilsTest {
 
     }
 
+    @Test
+    void quickSorting() {
+        final List<Integer> result = SortingUtils.quickSort(mixedList);
+
+        assertThat(result).containsExactly(2, 3, 6, 7, 13, 22, 42);
+
+    }
+
 }

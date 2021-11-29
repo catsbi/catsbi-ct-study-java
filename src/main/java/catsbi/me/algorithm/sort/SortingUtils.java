@@ -1,6 +1,7 @@
 package catsbi.me.algorithm.sort;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -92,8 +93,28 @@ public class SortingUtils {
     }
 
 
-    public static <T extends Comparable<T>> void quickSort(List<T> list) {
+    public static <T extends Comparable<T>> List<T> quickSort(List<T> list) {
+        if (list.size() <= 1) {
+            return list;
+        }
 
+        final T pivot = list.get(0);
+        final List<T> leftArr = new ArrayList<>();
+        final List<T> rightArr = new ArrayList<>();
+
+        for (int i = 1; i < list.size(); i++) {
+            if (list.get(i).compareTo(pivot) > 0) {
+                rightArr.add(list.get(i));
+                continue;
+            }
+            leftArr.add(list.get(i));
+        }
+
+        List<T> mergedArr = new ArrayList<>(quickSort(leftArr));
+        mergedArr.add(pivot);
+        mergedArr.addAll(quickSort(rightArr));
+
+        return mergedArr;
     }
 
 
