@@ -37,4 +37,13 @@ class SortingUtilsTest {
         assertThat(mixedList).containsExactly(2, 3, 6, 7, 13, 22, 42);
     }
 
+    @Test
+    void mergeSorting() {
+        final List<Integer> result = SortingUtils.mergeSort(mixedList);
+
+        System.out.println("merge sort result = " + result);
+        assertThat(result).containsExactly(2, 3, 6, 7, 13, 22, 42);
+
+    }
+
 }
