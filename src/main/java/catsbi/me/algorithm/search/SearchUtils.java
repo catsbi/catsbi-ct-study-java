@@ -1,6 +1,8 @@
 package catsbi.me.algorithm.search;
 
+import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Deque;
 import java.util.List;
 import java.util.Map;
 
@@ -58,4 +60,52 @@ public class SearchUtils {
         }
         return visited;
     }
+
+
+    public static <T> List<T> dfsFunc(Map<T, List<T>> graph, T startNode) {
+        List<T> visited = new ArrayList<>();
+        Deque<T> needVisit = new ArrayDeque<>();
+
+        needVisit.add(startNode);
+
+        while (!needVisit.isEmpty()) {
+            final T node = needVisit.pop();
+
+            if (!visited.contains(node)) {
+                visited.add(node);
+                final List<T> adjacentNodes = graph.get(node);
+                for (T adjacentNode : adjacentNodes) {
+                    needVisit.push(adjacentNode);
+                }
+            }
+        }
+        return visited;
+    }
+
+    public static <T> List<T> recursiveDFSFunc(Map<T, List<T>> graph, T startNode) {
+        List<T> visited = new ArrayList<>();
+        Deque<T> needVisit = new ArrayDeque<>();
+
+        needVisit.add(startNode);
+
+        return recursiveDFSFunc(graph, visited, needVisit);
+    }
+
+    private static <T> List<T> recursiveDFSFunc(Map<T, List<T>> graph, List<T> visited, Deque<T> needVisit) {
+        if (needVisit.isEmpty()) {
+            return visited;
+        }
+
+        final T node = needVisit.pop();
+        if (!visited.contains(node)) {
+            visited.add(node);
+
+            for (T adjacentNodes : graph.get(node)) {
+                needVisit.push(adjacentNodes);
+            }
+        }
+        return recursiveDFSFunc(graph, visited, needVisit);
+    }
+
+
 }

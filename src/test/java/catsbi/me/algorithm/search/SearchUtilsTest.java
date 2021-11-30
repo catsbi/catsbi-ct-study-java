@@ -66,6 +66,28 @@ class SearchUtilsTest {
         assertThat(visitRoot).containsExactly("A", "B", "C", "D", "G", "H", "I", "E", "F", "J");
     }
 
+    @ParameterizedTest
+    @MethodSource("provideSetGraph")
+    void dfs(Map<String, List<String>> graph) {
+        final List<String> visitRoot = SearchUtils.dfsFunc(graph, "A");
+
+        System.out.println("visitRoot = " + visitRoot);
+        assertThat(visitRoot).containsExactly("A", "C", "I", "J", "H", "G", "B", "D", "F", "E");
+
+    }
+
+    @ParameterizedTest
+    @MethodSource("provideSetGraph")
+    void recursiveDfs(Map<String, List<String>> graph) {
+        final List<String> visitRoot = SearchUtils.recursiveDFSFunc(graph, "A");
+
+        System.out.println("visitRoot = " + visitRoot);
+        assertThat(visitRoot).containsExactly("A", "C", "I", "J", "H", "G", "B", "D", "F", "E");
+
+    }
+
+
+
     public static Stream<Arguments> provideSetGraph() {
         HashMap<String, List<String>> graph = new HashMap<>();
         graph.put("A", new ArrayList<>(Arrays.asList("B", "C")));
