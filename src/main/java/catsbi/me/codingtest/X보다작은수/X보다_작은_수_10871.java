@@ -1,4 +1,4 @@
-package catsbi.me.algorithm.baekjoon;
+package catsbi.me.codingtest.X보다작은수;
 
 import java.util.Scanner;
 

@@ -1,4 +1,4 @@
-package catsbi.me.algorithm.baekjoon;
+package catsbi.me.codingtest.별찍기;
 
 import java.util.Scanner;
 
