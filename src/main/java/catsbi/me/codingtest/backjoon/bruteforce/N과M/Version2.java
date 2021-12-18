@@ -9,13 +9,13 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 /**
- * https://www.acmicpc.net/problem/15649
+ * https://www.acmicpc.net/problem/15650
  */
-public class Version1 {
+public class Version2 {
     static final char WHITE_SPACE = ' ';
     static StringBuilder sb = new StringBuilder();
     static int N, M;
-    static int[] selected, used;
+    static int[] selected;
 
     public static void main(String[] args) {
         input();
@@ -29,7 +29,6 @@ public class Version1 {
         N = scan.nextInt();
         M = scan.nextInt();
         selected = new int[M + 1];
-        used = new int[N + 1];
     }
 
 
@@ -41,17 +40,10 @@ public class Version1 {
             sb.append(System.lineSeparator());
             return;
         }
-
-        for (int cand = 1; cand <= N; cand++) {
-            if(used[cand] == 1){ continue;}
-
+        for (int cand = selected[k - 1] + 1; cand <= N; cand++) {
             selected[k] = cand;
-            used[cand] = 1;
-
             rec_func(k + 1);
-
             selected[k] = 0;
-            used[cand] = 0;
         }
     }
 
