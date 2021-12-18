@@ -1,4 +1,4 @@
-package catsbi.me.algorithm.programmers;
+package catsbi.me.codingtest.programmers.sort.K번째수;
 
 import java.util.Arrays;
 

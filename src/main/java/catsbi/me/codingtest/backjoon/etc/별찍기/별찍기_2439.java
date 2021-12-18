@@ -1,4 +1,4 @@
-package catsbi.me.codingtest.별찍기;
+package catsbi.me.codingtest.backjoon.etc.별찍기;
 
 import java.util.Scanner;
 

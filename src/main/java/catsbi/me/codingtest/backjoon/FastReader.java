@@ -1,4 +1,4 @@
-package catsbi.me.codingtest;
+package catsbi.me.codingtest.backjoon;
 
 import java.io.BufferedReader;
 import java.io.File;

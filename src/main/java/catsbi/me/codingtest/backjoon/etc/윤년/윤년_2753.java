@@ -1,4 +1,4 @@
-package catsbi.me.codingtest.윤년;
+package catsbi.me.codingtest.backjoon.etc.윤년;
 
 import java.util.Scanner;
 

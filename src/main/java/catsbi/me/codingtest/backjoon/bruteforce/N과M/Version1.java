@@ -1,4 +1,4 @@
-package catsbi.me.codingtest.bruteforce.N과M;
+package catsbi.me.codingtest.backjoon.bruteforce.N과M;
 
 import java.io.*;
 import java.util.*;
