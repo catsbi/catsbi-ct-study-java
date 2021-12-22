@@ -1,4 +1,4 @@
-package catsbi.me.codingtest.사분면고르기;
+package catsbi.me.codingtest.backjoon.etc.사분면고르기;
 
 import java.util.Scanner;
 

@@ -1,12 +1,12 @@
-package catsbi.me.codingtest.bruteforce.N과M;
+package catsbi.me.codingtest.backjoon.bruteforce.N과M;
 
 import java.io.*;
 import java.util.*;
 
 /**
- * https://www.acmicpc.net/problem/15649
+ * https://www.acmicpc.net/problem/15651
  */
-public class Version1 {
+public class Version3 {
     static StringBuilder sb = new StringBuilder();
 
     static void input() {
@@ -27,6 +27,7 @@ public class Version1 {
             // selected[1...M] 배열이 새롭게 탐색된 결과
             for (int i = 1; i <= M; i++) sb.append(selected[i]).append(' ');
             sb.append('\n');
+
         } else {
             for (int cand = 1; cand <= N; cand++) {
                 // k 번째에 cand 가 올 수 있으면
