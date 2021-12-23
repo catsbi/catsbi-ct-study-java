@@ -1,4 +1,4 @@
-package catsbi.me.codingtest.sort.가장큰수;
+package catsbi.me.codingtest.programmers.sort.가장큰수;
 
 import java.util.ArrayList;
 import java.util.List;
