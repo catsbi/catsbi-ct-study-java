@@ -14,27 +14,32 @@ public class Solution {
         return recSolution(citations, citations.length - 1, 0);
     }
 
-    private int recSolution(int[] citations, int h, int answer) {
-        if (h < 0 || citations.length - h >= citations[h]) {
-            return answer;
+    private int recSolution(int[] citations, int index, int h) {
+        if (index < 0 || citations.length - index > citations[index]) {
+            return h;
         }
 
-        return recSolution(citations, h - 1, answer + 1);
+        return recSolution(citations, index - 1, h + 1);
+    }
+
+    public static void main(String[] args) {
+        final int result = new Solution().solution(new int[]{3, 0, 6, 1, 5});
+        System.out.println("result = " + result);
     }
 
     /**
      * 반복문을 이용한 풀이 방법
      */
     /*public int solution(int[] citations) {
-        int n = citations.length, answer = 0;
+        int n = citations.length, h = 0;
         Arrays.sort(citations);
 
-        for (int h = n - 1; h >= 0; h--) {
-            if ((n - h) >= citations[h]) {
-                return answer;
+        for (int i = n - 1; i >= 0; i--) {
+            if ((n - i) > citations[i]) {
+                return h;
             }
-            answer++;
+            h++;
         }
-        return answer;
+        return h;
     }*/
 }
