@@ -14,12 +14,12 @@ public class Solution {
         return recSolution(citations, citations.length - 1, 0);
     }
 
-    private int recSolution(int[] citations, int index, int h) {
-        if (index < 0 || citations.length - index > citations[index]) {
+    private int recSolution(int[] citations, int numOfRemainCitation, int h) {
+        if (numOfRemainCitation < 0 || h >= citations[numOfRemainCitation]) {
             return h;
         }
 
-        return recSolution(citations, index - 1, h + 1);
+        return recSolution(citations, numOfRemainCitation - 1, h + 1);
     }
 
     public static void main(String[] args) {
@@ -31,14 +31,13 @@ public class Solution {
      * 반복문을 이용한 풀이 방법
      */
     /*public int solution(int[] citations) {
-        int n = citations.length, h = 0;
+        int h = 0;
         Arrays.sort(citations);
 
-        for (int i = n - 1; i >= 0; i--) {
-            if ((n - i) > citations[i]) {
+        for (int i = citations.length - 1; i >= 0; i--, h++) {
+            if (h >= citations[i]) {
                 return h;
             }
-            h++;
         }
         return h;
     }*/
