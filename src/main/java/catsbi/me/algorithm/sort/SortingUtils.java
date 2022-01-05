@@ -1,7 +1,6 @@
 package catsbi.me.algorithm.sort;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
@@ -115,6 +114,50 @@ public class SortingUtils {
         mergedArr.addAll(quickSort(rightArr));
 
         return mergedArr;
+    }
+
+    /**
+     * primitive middle pivot quick sort
+     */
+    public static void middleQuickSort(int[] nums) {
+        middleQuickSort(nums, 0, nums.length - 1);
+    }
+
+    private static void middleQuickSort(int[] nums, int low, int high) {
+        if (low >= high) {
+            return;
+        }
+
+        int pivot = partition(nums, low, high);
+
+        middleQuickSort(nums, low, pivot);
+        middleQuickSort(nums, pivot + 1, high);
+    }
+
+    private static int partition(int[] nums, int left, int right) {
+        int low = left;
+        int high = right;
+        int pivot = nums[(left + right) / 2];
+
+        while (low < high) {
+            while (nums[low] < pivot) {
+                low++;
+            }
+
+            while (nums[high] > pivot && low <= high) {
+                high--;
+            }
+
+            swap(nums, low, high);
+        }
+
+        return high;
+    }
+
+    private static void swap(int[] nums, int i, int j) {
+        int temp = nums[i];
+        nums[i] = nums[j];
+        nums[j] = temp;
     }
 
 
