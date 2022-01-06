@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 /**
- * 에라토스의 체를 이용한 소수 구하기 알고리즘
+ * 에라토스테네스의 체를 이용한 소수 구하기 알고리즘
  */
 
 public class PrimeNumberCalculator {
