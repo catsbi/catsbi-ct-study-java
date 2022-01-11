@@ -23,5 +23,5 @@
     - 버블,선택,삽입,퀵,병합 정렬
 
 ## 코딩테스트 문제 풀이
-###백준(Backjoon)([링크](src/main/java/catsbi/me/codingtest/backjoon)) 
-###프로그래머스(Programmers)([링크](src/main/java/catsbi/me/codingtest/programmers)) 
+### 백준(Backjoon)([링크](src/main/java/catsbi/me/codingtest/backjoon)) 
+### 프로그래머스(Programmers)([링크](src/main/java/catsbi/me/codingtest/programmers)) 
